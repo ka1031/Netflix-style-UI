@@ -5,37 +5,33 @@ The app includes Login, Sign Up, and Home pages with secure authentication and m
 
 ✨ Features
 
-User Sign Up and Login with PostgreSQL database
+1)User Sign Up and Login with PostgreSQL database
 
-Secure credential storage
+2)Secure credential storage
 
-Express backend for authentication and API handling
+3)Express backend for authentication and API handling
 
-Home page displaying trending movies from TMDB
+4)Home page displaying trending movies from TMDB
 
-Protected routes after authentication
+5)Protected routes after authentication
 
-Logout functionality
+6)Logout functionality
 
-Responsive Netflix-style UI
+7)Responsive Netflix-style UI
 
 🛠 Tech Stack
+
 Frontend
-
 React
-
 CSS
 
 Backend
-
 Node.js
 
 Express
 
 Database
-
 PostgreSQL (PSQL)
 
 External API
-
 TMDB (The Movie Database)
