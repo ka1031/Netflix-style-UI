@@ -1,55 +1,41 @@
-# Netflix-Style UI
+🎬 Netflix Clone (React + Express + PostgreSQL)
 
-This is a Netflix-style web application 
-It includes a **Login page** and a **Home page**, with movie data fetched from the **TMDB API**.
+A Netflix-style web application built with React, Express, and PostgreSQL.
+The app includes Login, Sign Up, and Home pages with secure authentication and movie data fetched from the TMDB API.
 
----
+✨ Features
 
-## Features
+User Sign Up and Login with PostgreSQL database
 
-- Login functionality using predefined credentials
-- Express backend to handle login logic
-- Home page displays trending movies from TMDB
-- Sign out redirects user back to Login page
-- No database used currently
+Secure credential storage
 
----
+Express backend for authentication and API handling
 
-## Tech Stack
+Home page displaying trending movies from TMDB
 
-- Frontend: React
-- Backend: Node.js, Express
-- API: TMDB
+Protected routes after authentication
 
----
+Logout functionality
 
-## How It Works
+Responsive Netflix-style UI
 
-- User logs in with preset credentials
-- Express backend validates the credentials
-- On successful login, user is redirected to Home page
-- Home page fetches and displays trending movies from TMDB
-- Sign out returns the user to the Login page
+🛠 Tech Stack
+Frontend
 
----
+React
 
-## Future Improvements
+CSS
 
-- Add database support using **MongoDB**
-- Store user credentials securely
-- Improve authentication flow
+Backend
 
----
+Node.js
 
-## Note
+Express
 
-- No database is used in the current version
-- Login is for demonstration purposes only
+Database
 
----
+PostgreSQL (PSQL)
 
-## Author
+External API
 
-Aayush Kumar
-
-
+TMDB (The Movie Database)
