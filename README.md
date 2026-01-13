@@ -27,7 +27,6 @@ CSS
 
 Backend
 Node.js
-
 Express
 
 Database
