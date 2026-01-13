@@ -85,7 +85,7 @@ const Form = () => {
             </div>
 
             <p>
-              New to Netflix? <a href="#">Sign Up now</a>
+              New to Netflix? <a href="/signup">Sign Up now</a>
             </p>
           </form>
         </div>

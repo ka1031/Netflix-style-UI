@@ -10,6 +10,32 @@ app.get("/", (req, res) => {
   res.send("Backend is running");
 });
 
+app.post("/signup", async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const userExists = await pool.query(
+      "SELECT * FROM users WHERE email = $1",
+      [email]
+    );
+    if (userExists.rows.length > 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Email already registered",
+      });
+
+    }
+    await pool.query(
+      "INSERT INTO users ( email, password) VALUES ($1, $2)",
+      [email, password]
+    );
+    res.status(201).json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ success: false, error: "Server error" });
+  }
+
+})
+
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 

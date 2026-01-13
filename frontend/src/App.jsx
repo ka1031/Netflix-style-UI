@@ -5,11 +5,16 @@ import Home from './Home'
 import TitleCards from './TitleCards'
 import Header from './header';
 import Form from './form';
+import Signup from './signup';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path='/signup' element={<div className='sign_up_page'>
+          <Header></Header>
+          <Signup></Signup>
+        </div>} />
         <Route path="/Login" element={<div className='login_page'>
           <Header></Header>
           <Form></Form>

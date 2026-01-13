@@ -4,8 +4,8 @@ import "./styles/header.css";
 
 const Header = () => {
   return (
-    <div>
-      <div className='header'>
+    <div className='header'>
+      <div className='header_img'>
         <img src={netflixLogo} alt='logo' style={{ width: '200px', height: 'auto' }}></img>
       </div>
     </div>
