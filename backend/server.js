@@ -1,10 +1,13 @@
 const express = require("express");
 const cors = require("cors");
+const bcrypt = require("bcrypt");
 const pool = require("./db");
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+const SALT_ROUNDS = 10;
 
 app.get("/", (req, res) => {
   res.send("Backend is running");
@@ -24,9 +27,10 @@ app.post("/signup", async (req, res) => {
       });
 
     }
+    const hashedPassword = await bcrypt.hash(password, SALT_ROUNDS);
     await pool.query(
       "INSERT INTO users ( email, password) VALUES ($1, $2)",
-      [email, password]
+      [email, hashedPassword]
     );
     res.status(201).json({ success: true });
   } catch (err) {
@@ -51,11 +55,13 @@ app.post("/login", async (req, res) => {
 
     const user = result.rows[0];
 
-    if (user.password === password) {
-      res.json({ success: true });
-    } else {
-      res.status(401).json({ success: false });
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(401).json({ success: false });
     }
+
+    res.json({ success: true });
 
   } catch (err) {
     console.error(err);
