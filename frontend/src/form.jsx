@@ -11,7 +11,7 @@ const Form = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/login", {
+      const response = await fetch("http://localhost:5000/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -22,7 +22,7 @@ const Form = () => {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        navigate("/Home")
+        navigate("/home")
       } else {
         alert("Invalid email or password");
       }

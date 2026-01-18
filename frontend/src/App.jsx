@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from './Navbar'
 import Home from './Home'
 import TitleCards from './TitleCards'
@@ -11,15 +11,16 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
         <Route path='/signup' element={<div className='sign_up_page'>
           <Header></Header>
           <Signup></Signup>
         </div>} />
-        <Route path="/Login" element={<div className='login_page'>
+        <Route path="/login" element={<div className='login_page'>
           <Header></Header>
           <Form></Form>
         </div>} />
-        <Route path="/Home" element={<div className='home_page'>
+        <Route path="/home" element={<div className='home_page'>
           <Navbar></Navbar>
           <Home></Home>
           <TitleCards></TitleCards>
