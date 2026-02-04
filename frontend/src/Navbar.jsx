@@ -1,11 +1,20 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 import netflixLogo from './assets/netflix_logo.svg';
 import avatar from './assets/Netflix-avatar.svg';
 import caret from './assets/caret_icon.svg';
-
 import './styles/Navbar.css'
 
+
+
 const Navbar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
   return (
     <div className='bar'>
       <div className='main'>
@@ -52,7 +61,11 @@ const Navbar = () => {
         </div>
         <div className='navbar_profile'>
           <a href='#'><img src={caret} style={{ width: '2vb', height: '2vh' }}></img></a>
-          <div className='dropdown'><a href='/Login'>Sign Out of Netflix</a></div>
+          <div className='dropdown'><a href="#" onClick={handleLogout}>
+            Sign Out of Netflix
+          </a>
+
+          </div>
         </div>
       </div>
     </div>

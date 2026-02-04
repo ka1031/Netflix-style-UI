@@ -22,6 +22,8 @@ const Form = () => {
       const data = await response.json();
 
       if (response.ok && data.success) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
         navigate("/home")
       } else {
         alert("Invalid email or password");

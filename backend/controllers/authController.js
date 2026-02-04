@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const pool = require("../db");
+const jwt = require("jsonwebtoken");
 
 const SALT_ROUNDS = 10;
 
@@ -52,8 +53,20 @@ exports.login = async (req, res) => {
         if (!isMatch) {
             return res.status(401).json({ success: false });
         }
+        const token = jwt.sign(
+            { id: user.id, email: user.email },
+            process.env.JWT_SECRET,
+            { expiresIn: process.env.JWT_EXPIRES_IN }
+        );
 
-        res.json({ success: true });
+        res.json({
+            success: true,
+            token,
+            user: {
+                id: user.id,
+                email: user.email
+            }
+        });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Server error" });
