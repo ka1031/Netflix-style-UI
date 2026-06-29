@@ -1,0 +1,117 @@
+/* ── MyList page ─────────────────────────────────────────── */
+.mylist {
+    padding: 40px 4%;
+}
+
+.mylist h2 {
+    font-size: 1.6rem;
+    margin-bottom: 24px;
+}
+
+.mylist-empty {
+    color: #aaa;
+    font-size: 1rem;
+}
+
+.mylist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+.mylist-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.mylist-card p {
+    font-size: 0.8rem;
+    color: #ccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mylist-img-wrapper {
+    position: relative;
+}
+
+.mylist-img-wrapper img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
+.mylist-no-img {
+    width: 100%;
+    height: 240px;
+    background: #222;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: #888;
+    padding: 8px;
+    text-align: center;
+}
+
+.mylist-remove-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(0, 0, 0, 0.75);
+    border: none;
+    color: #fff;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.mylist-img-wrapper:hover .mylist-remove-btn {
+    opacity: 1;
+}
+
+/* ── TitleCards watchlist button ─────────────────────────── */
+.card-img-wrapper {
+    position: relative;
+}
+
+.watchlist-btn {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.75);
+    border: 2px solid #fff;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s, background 0.2s;
+    line-height: 1;
+}
+
+.card-img-wrapper:hover .watchlist-btn {
+    opacity: 1;
+}
+
+.watchlist-btn.in-list {
+    background: #e50914;
+    border-color: #e50914;
+}

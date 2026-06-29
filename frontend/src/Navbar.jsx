@@ -19,11 +19,11 @@ const Navbar = () => {
     <div className='bar'>
       <div className='main'>
         <div><img src={netflixLogo} alt='logo' style={{ width: '100px', height: 'auto' }}></img></div>
-        <div><a href='#'>Home</a></div>
+        <div><a href="/home">Home</a></div>
         <div><a href='#'>TV Shows</a></div>
         <div><a href='#'>Movies</a></div>
         <div><a href='#'>New & Popular</a></div>
-        <div><a href='#'>My List</a></div>
+        <a href="/my-list">My List</a>
         <div><a href='#'>Browse by Languages</a></div>
       </div>
       <div className='right'>

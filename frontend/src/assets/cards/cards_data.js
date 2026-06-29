@@ -11,6 +11,8 @@ export const fetchPopularMovies = async () => {
 
   return data.results.map(movie => ({
     image: `${IMAGE_BASE_URL}${movie.poster_path}`,
-    name: movie.title
+    name: movie.title || movie.name,  // 'name' is used for TV shows
+    tmdb_id: movie.id,                // ← was missing
+    poster_path: movie.poster_path,   // ← was missing (raw path, no base URL)
   }));
 };
