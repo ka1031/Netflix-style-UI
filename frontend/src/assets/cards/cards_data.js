@@ -1,18 +1,11 @@
-const API_KEY = 'fd10d705578f498918f69606ffa5593a';
-
-const BASE_URL = 'https://api.themoviedb.org/3/trending/movie/day';
-const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500/';
-
+const API = "http://localhost:5000";
 export const fetchPopularMovies = async () => {
-  const res = await fetch(
-    `${BASE_URL}?api_key=${API_KEY}`
-  );
-  const data = await res.json();
-
-  return data.results.map(movie => ({
-    image: `${IMAGE_BASE_URL}${movie.poster_path}`,
-    name: movie.title || movie.name,  // 'name' is used for TV shows
-    tmdb_id: movie.id,                // ← was missing
-    poster_path: movie.poster_path,   // ← was missing (raw path, no base URL)
-  }));
+  try {
+    const res = await fetch(`${API}/movies/trending`);
+    const data = await res.json();
+    return data.success ? data.movies : [];
+  } catch (err) {
+    console.error("fetchPopularMovies error:", err);
+    return [];
+  }
 };

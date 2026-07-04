@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import netflixLogo from './assets/netflix_logo.svg';
 import avatar from './assets/Netflix-avatar.svg';
@@ -6,8 +6,15 @@ import caret from './assets/caret_icon.svg';
 import './styles/Navbar.css'
 
 
-
 const Navbar = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
+    }
+  };
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -27,11 +34,20 @@ const Navbar = () => {
         <div><a href='#'>Browse by Languages</a></div>
       </div>
       <div className='right'>
-        <div className='search'>
-          <svg width="4vb" height="4vh" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </div>
+        <form className='search' onSubmit={handleSearch}>
+          <input
+            type="text"
+            placeholder="Titles, people, genres"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+          <button type="submit" className="search-btn">
+            <svg width="4vb" height="4vh" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </form>
         <div><a href='#'>Children</a></div>
         <div>
           <svg width="4vb" height="4vh" viewBox="-1.5 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

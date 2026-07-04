@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./styles/TitleCards.css";
 import { fetchPopularMovies } from "./assets/cards/cards_data.js";
 import useWatchlist from "./hooks/useWatchlist";
@@ -8,6 +9,7 @@ const TMDB_IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 const TitleCards = () => {
   const [cardsData, setCardsData] = useState([]);
   const { isInWatchlist, addToWatchlist, removeFromWatchlist } = useWatchlist();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchPopularMovies().then((data) => setCardsData(data));
@@ -38,7 +40,7 @@ const TitleCards = () => {
         {cardsData.map((card, index) => {
           const inList = isInWatchlist(card.tmdb_id, "movie");
           return (
-            <div className="card" key={index}>
+            <div className="card" key={index} onClick={() => navigate(`/movie/${card.tmdb_id}`)}>
               <div className="card-img-wrapper">
                 <img src={card.image} alt={card.name} />
                 <button

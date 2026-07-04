@@ -6,8 +6,10 @@ import TitleCards from "./TitleCards";
 import Header from "./header";
 import Form from "./form";
 import Signup from "./signup";
-import MyList from "./MyList";           // NEW
+import MyList from "./MyList";
 import ProtectedRoute from "./ProtectedRoute";
+import SearchResults from "./SearchResults"; // add import
+import MovieDetail from "./MovieDetail"; // add import
 
 function App() {
   return (
@@ -47,7 +49,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         {/* NEW: My List page */}
         <Route
           path="/my-list"
@@ -56,6 +57,28 @@ function App() {
               <div className="home_page">
                 <Navbar />
                 <MyList />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <ProtectedRoute>
+              <div className="home_page">
+                <Navbar />
+                <SearchResults />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/movie/:id"
+          element={
+            <ProtectedRoute>
+              <div className="home_page">
+                <Navbar />
+                <MovieDetail />
               </div>
             </ProtectedRoute>
           }

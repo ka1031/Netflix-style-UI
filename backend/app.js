@@ -3,7 +3,8 @@ const cors = require("cors");
 
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
-const watchlistRoutes = require("./routes/watchlistRoutes"); // NEW
+const watchlistRoutes = require("./routes/watchlistRoutes");
+const movieRoutes = require("./routes/movieRoutes");
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
-app.use("/watchlist", watchlistRoutes); // NEW
+app.use("/watchlist", watchlistRoutes);
+app.use("/movies", movieRoutes);
 
 module.exports = app;
